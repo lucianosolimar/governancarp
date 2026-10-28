@@ -242,6 +242,19 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); }
 .ec-fc-lei { margin: 0; font-size: var(--cds-font-size-caption); line-height: 1.5; border-left: 3px solid var(--ec-accent); padding-left: var(--cds-pad-sm); }
 .ec-fc-cl { font-weight: var(--cds-font-weight-medium); }
 .ec-fc-lig { color: var(--color-fg-muted); }
+
+.ec-gloss { border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-panel); }
+.ec-gloss > summary { cursor: pointer; list-style: none; padding: var(--cds-pad-sm) var(--cds-pad-md); font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); display: flex; align-items: center; gap: 8px; }
+.ec-gloss > summary::-webkit-details-marker { display: none; }
+.ec-gloss > summary::before { content: "?"; display: inline-flex; align-items: center; justify-content: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; border: 1px solid var(--color-border-line); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ec-gloss > summary .ec-gloss-hint { font-weight: 400; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ec-gloss > summary:focus-visible { outline: 2px solid var(--ec-accent, var(--color-fg)); outline-offset: 2px; }
+.ec-gloss-body { padding: 0 var(--cds-pad-md) var(--cds-pad-md); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: var(--cds-gap-lg); }
+.ec-gloss-sec { display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+.ec-gloss-sec h3 { margin: 0; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); }
+.ec-gloss-sec .ec-table td:first-child { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); white-space: nowrap; }
+.ec-gloss-note { grid-column: 1 / -1; margin: 0; font-size: var(--cds-font-size-caption); line-height: 1.5; border-left: 3px solid var(--ec-accent); padding-left: var(--cds-pad-sm); }
+abbr.ec-code { text-decoration: underline dotted; text-underline-offset: 2px; cursor: help; }
 </style>
 
 <div class="ec" id="ec">
@@ -256,6 +269,19 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); }
       <select class="ec-input" id="sel-cluster" data-source="clusters"></select>
     </label>
   </header>
+
+  <details class="ec-gloss" id="glossario">
+    <summary>Como ler este painel <span class="ec-gloss-hint">Códigos, classificações e termos usados</span></summary>
+    <div class="ec-gloss-body">
+<div class="ec-gloss-sec"><h3>Os códigos</h3><p class="ec-note">Cada item tem um código que mostra de onde ele vem. Os códigos são numerados dentro de cada cluster: o K1 do TIC não é o mesmo K1 da Indústria. Passe o mouse sobre um código para ver o que ele significa.</p><div class="ec-scroll"><table class="ec-table"><thead><tr><th>Código</th><th>Significa</th><th>De onde vem</th></tr></thead><tbody><tr><td>CA</td><td>Cenário atual</td><td>Reflexão 1</td></tr><tr><td>DC</td><td>Desafio central</td><td>Reflexão 2</td></tr><tr><td>C</td><td>Causa</td><td>Reflexão 3</td></tr><tr><td>FD</td><td>Futuro desejado</td><td>Reflexão 4</td></tr><tr><td>G</td><td>Gap: distância entre o cenário atual e o desejado</td><td>Proposto pelo painel a partir das reflexões</td></tr><tr><td>K</td><td>Chave de transformação: o que precisa mudar para fechar um gap</td><td>Reflexão 5 e proposta do painel</td></tr><tr><td>RF</td><td>Referência</td><td>Reflexão 8</td></tr><tr><td>D</td><td>Dado ou informação de que o grupo precisa</td><td>Reflexão 9</td></tr><tr><td>P</td><td>Pergunta para aprofundar (P2.1 = 1ª pergunta da Reflexão 2)</td><td>Documento do cluster ou painel</td></tr><tr><td>R1 a R10</td><td>Reflexões do roteiro</td><td>Reunião do cluster</td></tr></tbody></table></div></div>
+<div class="ec-gloss-sec"><h3>Classificações das chaves</h3><div class="ec-scroll"><table class="ec-table"><thead><tr><th>Termo</th><th>Significa</th></tr></thead><tbody><tr><td>Alcance: Direto</td><td>O próprio cluster consegue executar</td></tr><tr><td>Alcance: Articulação</td><td>Depende de parceiros (empresas, universidades, entidades)</td></tr><tr><td>Alcance: Advocacy</td><td>Depende de decisão do poder público</td></tr><tr><td>Tipo de alavanca</td><td>O tipo de mudança que a chave exige: educação, regulação, infraestrutura, financiamento, dados, tecnologia etc.</td></tr><tr><td>Horizonte</td><td>Curto, médio ou longo prazo</td></tr></tbody></table></div></div>
+<div class="ec-gloss-sec"><h3>Situações</h3><div class="ec-scroll"><table class="ec-table"><thead><tr><th>Termo</th><th>Significa</th></tr></thead><tbody><tr><td>Respondida</td><td>A reflexão foi respondida pelo grupo</td></tr><tr><td>A validar</td><td>Resposta incompleta ou proposta pelo painel, precisa de confirmação</td></tr><tr><td>Proposta para validação / A priorizar</td><td>Gap ou chave sugerido pelo painel, ainda não aprovado nem priorizado pelo grupo</td></tr><tr><td>Disponível / Em andamento / A levantar</td><td>Situação de cada dado pedido pelo cluster</td></tr></tbody></table></div></div>
+<div class="ec-gloss-sec"><h3>Forças de mudança</h3><div class="ec-scroll"><table class="ec-table"><thead><tr><th>Termo</th><th>Significa</th></tr></thead><tbody><tr><td>Tendência</td><td>Mudança quase certa: serve para planejar</td></tr><tr><td>Incerteza crítica</td><td>Pode ir para um lado ou outro: serve para construir cenários</td></tr><tr><td>Oportunidade / Ameaça</td><td>Efeito favorável ou desfavorável sobre o cluster</td></tr><tr><td>Pressão</td><td>Exige adaptação, mesmo que traga ganhos</td></tr><tr><td>Restrição</td><td>Limita o que o cluster quer fazer</td></tr><tr><td>Lacuna</td><td>Tema relevante que o cluster ainda não discutiu</td></tr><tr><td>Não citado</td><td>O cluster não tratou a força</td></tr></tbody></table></div></div>
+<div class="ec-gloss-sec"><h3>Leitura PESTAL</h3><p class="ec-note">Político, Econômico, Social, Tecnológico, Ambiental e Legal. Cada eixo pode estar registrado pelo cluster, proposto pelo painel ou ser uma lacuna.</p></div>
+<div class="ec-gloss-sec"><h3>Visão consolidada</h3><div class="ec-scroll"><table class="ec-table"><thead><tr><th>Termo</th><th>Significa</th></tr></thead><tbody><tr><td>Tema transversal</td><td>Assunto que aparece em vários clusters</td></tr><tr><td>Ponte</td><td>Chave de um cluster que pode ser compartilhada com outro</td></tr><tr><td>Conexão</td><td>Proposta concreta de trabalho conjunto entre clusters, montada a partir de temas e pontes</td></tr></tbody></table></div></div>
+<p class="ec-gloss-note"><b>O que é proposta do painel.</b> Tudo o que não veio literalmente dos documentos dos clusters (gaps, chaves, temas, forças, conexões e algumas leituras PESTAL) é proposta de trabalho para discussão, não decisão dos grupos. Isso está indicado em cada seção.</p>
+    </div>
+  </details>
 
   <!-- VISÃO CONSOLIDADA -->
   <section class="ec-cons" id="consolidado" hidden>
@@ -885,7 +911,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); }
       items.forEach((x) => {
         const it = el('div', 'ec-item');
         const meta = el('div', 'ec-item-meta');
-        meta.append(el('span', 'ec-pill', x.dimensao), el('span', null, x.id + ' · Reflexão ' + x.reflexao));
+        const ref = el('span'); ref.append(linkCodes(x.id, cur()), document.createTextNode(' · Reflexão ' + x.reflexao)); meta.append(el('span', 'ec-pill', x.dimensao), ref);
         it.append(el('p', 'ec-item-text', x.texto), meta);
         col.append(it);
       });
@@ -912,13 +938,13 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); }
     box.replaceChildren(...mine(r[0]).map((g) => {
       const card = el('article', 'ec-card');
       const head = el('div', 'ec-gap-head');
-      head.append(el('span', 'ec-gap-id', g.id), el('h3', 'ec-gap-title', g.gap), el('span', 'ec-pill', g.dimensao));
+      const gid = el('span', 'ec-gap-id'); gid.append(linkCodes(g.id, cur())); head.append(gid, el('h3', 'ec-gap-title', g.gap), el('span', 'ec-pill', g.dimensao));
       const ft = el('div', 'ec-fromto');
       const from = el('div', 'ec-ft ec-ft-from'); from.append(el('span', 'ec-ft-label', 'Hoje'), el('span', null, g.de));
       const to = el('div', 'ec-ft ec-ft-to'); to.append(el('span', 'ec-ft-label', 'Desejado'), el('span', null, g.para));
       ft.append(from, el('span', 'ec-arrow', '→'), to);
       const dl = el('dl', 'ec-dl');
-      [['Indicador', g.indicador], ['Linha de base', g.linha_base], ['Meta 2036', g.meta_2036], ['Meta 2050', g.meta_2050], ['Origem', g.origem]].forEach(([k, v]) => dl.append(el('dt', null, k), el('dd', null, v)));
+      [['Indicador', g.indicador], ['Linha de base', g.linha_base], ['Meta 2036', g.meta_2036], ['Meta 2050', g.meta_2050], ['Origem', g.origem]].forEach(([k, v]) => { const dd = el('dd'); if (k === 'Origem') dd.append(linkCodes(v, cur())); else dd.textContent = v; dl.append(el('dt', null, k), dd); });
       const foot = el('div', 'ec-item-meta'); foot.append(pill(g.status));
       card.append(head, ft, dl, foot);
       return card;
@@ -1175,7 +1201,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); }
         const ul = el('ul', 'ec-tema-list');
         its.forEach((x) => {
           const li = el('li', 'ec-tema-item');
-          const txt = el('span'); txt.append(document.createTextNode(x.evidencia + ' '), el('span', 'ec-tema-ref', '(' + x.referencias + ')'));
+          const txt = el('span'); const rf = el('span', 'ec-tema-ref'); rf.append(document.createTextNode('('), linkCodes(x.referencias, x.cluster), document.createTextNode(')')); txt.append(document.createTextNode(x.evidencia + ' '), rf);
           li.append(el('span', 'ec-tema-cl', x.cluster), txt); ul.append(li);
         });
         card.append(head, ul); return card;
@@ -1266,7 +1292,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); }
     const rows = d.data.filter((x) => conxSel === 'Todos' || String(x.clusters).split(',').map((s) => s.trim()).includes(conxSel));
     tb.replaceChildren(...rows.map((x) => {
       const tr = el('tr'); tr.dataset.key = enc(x.id);
-      const t1 = el('td'); t1.append(el('span', 'ec-conx-nome', x.conexao), el('span', 'ec-conx-desc', x.descricao), el('span', 'ec-conx-base', 'Base: ' + x.base));
+      const t1 = el('td'); t1.append(el('span', 'ec-conx-nome', x.conexao), el('span', 'ec-conx-desc', x.descricao), (() => { const bs = el('span', 'ec-conx-base'); bs.append(document.createTextNode('Base: '), linkBase(x.base)); return bs; })());
       const t2 = el('td');
       String(x.clusters).split(',').map((s) => s.trim()).filter(Boolean).forEach((cl) => { const ch = el('span', 'ec-cl-chip', cl); ch.style.setProperty('--chip', chipColor(cl)); t2.append(ch); });
       const t3 = el('td', 'ec-conx-pot', x.potencial);
@@ -1290,9 +1316,9 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); }
         const li = el('li', 'ec-fc-row');
         const left = el('div'); if (!onlyCluster) left.append(el('div', 'ec-fc-cl', e.cluster)); left.append(efPill(e.efeito));
         const right = el('div');
-        if (e.evidencia) right.append(document.createTextNode(e.evidencia));
+        if (e.evidencia) right.append(linkCodes(e.evidencia, e.cluster));
         else right.append(el('span', 'ec-fc-lig', onlyCluster ? 'O cluster não tratou esta força. Vale discutir na próxima reunião.' : '—'));
-        if (onlyCluster && e.ligacoes) { right.append(el('br')); right.append(el('span', 'ec-fc-lig', 'Ligada a: ' + e.ligacoes)); }
+        if (onlyCluster && e.ligacoes) { right.append(el('br')); const lg = el('span', 'ec-fc-lig'); lg.append(document.createTextNode('Ligada a: '), linkCodes(e.ligacoes, e.cluster)); right.append(lg); }
         li.append(left, right); ul.append(li);
       });
     card.append(head, meta, ul, el('p', 'ec-fc-lei', fx.leitura));
@@ -1352,9 +1378,53 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); }
     }
   }
 
+
+  // ---------- códigos com significado ao passar o mouse ----------
+  let codeMap = new Map();
+  const CODE_RE = /\b(CA|DC|FD|RF|C|G|K|D|P|R)(\d+(?:\.\d+)?)\b/g;
+  const cut = (t, n) => { t = String(t || ''); return t.length > n ? t.slice(0, n - 1).trimEnd() + '…' : t; };
+  function buildCodeMap() {
+    const m = new Map();
+    const add = (id, rows, f) => { const d = dash.data(id); if (d.status === 'ok') (d.data || []).forEach((r) => { const v = f(r); if (v) m.set(r.cluster + '|' + v[0], v[1]); }); };
+    const nomes = { CA: 'Cenário atual', DC: 'Desafio central', C: 'Causa', FD: 'Futuro desejado' };
+    add('diagnostico', null, (r) => { const p = String(r.id).match(/^[A-Z]+/); return [r.id, (nomes[p && p[0]] || '') + ' ' + String(r.id).replace(/^[A-Z]+/, '') + ': ' + cut(r.texto, 140)]; });
+    add('gaps', null, (r) => [r.id, 'Gap ' + String(r.id).slice(1) + ': ' + r.gap]);
+    add('chaves', null, (r) => [r.id, 'Chave ' + String(r.id).slice(1) + ': ' + cut(r.chave, 140)]);
+    add('referencias', null, (r) => [r.id, 'Referência ' + String(r.id).slice(2) + ': ' + r.referencia]);
+    add('dados', null, (r) => [r.id, 'Dado ' + String(r.id).slice(1) + ': ' + cut(r.informacao, 140)]);
+    add('perguntas', null, (r) => [r.id, 'Pergunta ' + String(r.id).slice(1) + ': ' + cut(r.pergunta, 140)]);
+    return m;
+  }
+  function linkCodes(text, cluster) {
+    const frag = document.createDocumentFragment();
+    const s = String(text == null ? '' : text); let last = 0; let mt;
+    CODE_RE.lastIndex = 0;
+    while ((mt = CODE_RE.exec(s))) {
+      const code = mt[0];
+      const title = mt[1] === 'R' ? 'Reflexão ' + mt[2] : codeMap.get(cluster + '|' + code);
+      if (!title) continue;
+      if (mt.index > last) frag.append(document.createTextNode(s.slice(last, mt.index)));
+      const a = el('abbr', 'ec-code', code); a.title = title; frag.append(a);
+      last = mt.index + code.length;
+    }
+    if (last < s.length) frag.append(document.createTextNode(s.slice(last)));
+    return frag;
+  }
+  function linkBase(base) {
+    const frag = document.createDocumentFragment(); const lista = clusterList();
+    String(base || '').split(' · ').forEach((seg, i) => {
+      if (i) frag.append(document.createTextNode(' · '));
+      const k = seg.indexOf(': '); const cl = k > 0 ? seg.slice(0, k) : '';
+      if (cl && lista.includes(cl)) { frag.append(document.createTextNode(cl + ': ')); frag.append(linkCodes(seg.slice(k + 2), cl)); }
+      else frag.append(document.createTextNode(seg));
+    });
+    return frag;
+  }
+
   // ---------- desenho ----------
   dash.onData(() => {
     setColors();
+    codeMap = buildCodeMap();
     drawHeader();
     drawNumbers();
     drawEstrutura();
